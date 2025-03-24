@@ -1,9 +1,11 @@
-
+"use client"
 import { MagnifyingGlass } from '@phosphor-icons/react/dist/ssr';
 
 import Link from "next/link";
 
 import { Barlow } from 'next/font/google'
+import { useFetchThemeal } from '../hook/api';
+import Image from "next/image";
 
 const hankenGrotesk = Barlow({
     weight: ['500', '500'],
@@ -13,6 +15,10 @@ const hankenGrotesk = Barlow({
 
 
 export default function Header() {
+    const { data } = useFetchThemeal("random.php");
+
+    console.log(data)
+
     return (
        <section className="overflow-hidden relative">
         <div >
@@ -32,7 +38,9 @@ export default function Header() {
                         </Link>
                     </button>
                     <button className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer">
+                        <Link href="/random">
                         <h2 className={`${hankenGrotesk.className} `}>Surpreenda-me</h2>
+                        </Link>
                     </button>
                     <button className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer">
                         <h2 className={`${hankenGrotesk.className} `}>Categorias</h2>

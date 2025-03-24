@@ -36,9 +36,8 @@ export default function FoodVegan() {
         }
     }, [data]);
 
-    
     return (
-        <section className="relative bg-[#cbddd1] overflow-hidden min-h-screen">
+        <section className="relative bg-[#cbddd1] overflow-hidden min-h-auto">
                <article className="w-full relative">
                     <div className="flex flex-col items-center justify-center min-h-full p-6 relative xl:p-32">
                         <div>
@@ -48,23 +47,30 @@ export default function FoodVegan() {
                         {foodVegan.map((meal:any) => {
                             const descriptionObj = foodVeganDescriptions.find(desc => desc.strMeal === meal.strMeal);
                                 return (
-                                    <div className="bg-[#365b6d] rounded-4xl min-h-[500px] grid grid-flow-col relative" key={meal.idMeal}>
-                                        <div className="flex flex-col-reverse h-full text-center items-center relative pb-5">
-                                            <Button variant="default" className="bg-[#289dd2] text-md text-white cursor-pointer w-auto ">
-                                                Vamos cozinhar ?
-                                            </Button>
-                                            <p className="text-sm text-white p-2 font-sans">
-                                                {descriptionObj ? descriptionObj.description : "Descrição não disponível."}
-                                            </p>
-                                            <h1 className="text-2xl text-white w-auto h-auto font-semibold">
+                                    <div className="bg-[#365b6d] rounded-4xl relative min-h-96 overflow-hidden flex flex-col-reverse" key={meal.idMeal}>
+                                        <div className="flex flex-col-reverse flex-grow text-center items-center p-4 sm:p-5 lg:p-6">
+                                            <div className="p-2">
+                                                <Button variant="default" className="bg-[#289dd2] text-md text-white cursor-pointer w-auto ">
+                                                    Vamos cozinhar ?
+                                                </Button>
+                                            </div>
+                                            <div className="p-2">
+                                                <p className="text-sm text-white font-sans lg:max-h-20 overflow-hidden">
+                                                    {descriptionObj ? descriptionObj.description : "Descrição não disponível."}
+                                                </p>
+                                            </div>
+                                            <h1 className="text-2xl text-white font-semibold ">
                                                 {meal.strMeal}
                                             </h1>
+                                        
+                                        </div>
+                                        <div className="relative">
                                             <Image
                                                 src={meal.strMealThumb}
-                                                width={300}
-                                                height={400}
-                                                alt="foto comida"
-                                                className="absolute top-0 min-w-full h-[300px] object-cover rounded-t-4xl"
+                                                alt={meal.strMeal}
+                                                className="w-full h-52 object-cover"
+                                                width={500}
+                                                height={500}
                                             />
                                         </div>
                                     </div>

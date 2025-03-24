@@ -50,8 +50,6 @@ export default function FoodBreakfast() {
     const { data } = useFetchThemeal<{ meals: breakfast[] }>("filter.php?c=breakfast");
     const [FoodBreakfast, setFoodBreakfast] = useState<breakfast[]>([]);
 
-    console.log(data)
-
     useEffect(() => {
         if (data?.meals) {
             setFoodBreakfast(data.meals);
@@ -59,35 +57,19 @@ export default function FoodBreakfast() {
     }, [data]);
 
     return (
-    <section className="relative bg-[#d36a1a] overflow-hidden min-h-screen">
+    <section className="relative bg-[#d36a1a] overflow-hidden min-h-auto">
             <article className="w-full relative">
-                <div className="flex flex-col items-center justify-center min-h-full p-6 relative xl:p-32">
+                <div className="flex flex-col items-center justify-center min-h-full p-12 sm:p-2 relative xl:p-32">
                     <div>
-                        <h1 className="text-4xl pb-12 text-center font-sans font-bold text-[#f9f7dc] sm:text-4xl lg:text-6xl">Café Da Manhã</h1>
+                        <h1 className="text-4xl pb-12 text-center font-sans text-[#f9f7dc] sm:text-4xl lg:text-6xl">Café da Manhã</h1>
                     </div>
 
-                    <div className="relative grid gap-6 sm:px-12 sm:grid-cols-2 md:px-32 lg:grid-cols-3 lg:px-2">
+                    <div className="relative grid gap-6 sm:px-12 sm:grid-cols-2 md:px-32 lg:grid-cols-3 lg:px-2 xl:grid-cols-4">
                         {FoodBreakfast.map((meal:any) => {
                             const descriptionObj = foodBreakfastDescriptions.find(desc => desc.strMeal === meal.strMeal);
                                 return (
-                                    <div className="bg-[#f9f7dc] rounded-4xl relative min-h-96 overflow-hidden flex flex-col-reverse" key={meal.idMeal}>
-                                        <div className="flex flex-col-reverse flex-grow text-center items-center p-4 sm:p-5 lg:p-6">
-                                            <div className="p-2">
-                                                <Button variant="default" className="bg-[#763c00] text-md text-white cursor-pointer w-auto ">
-                                                    Vamos cozinhar ?
-                                                </Button>
-                                            </div>
-                                            <div className="p-2">
-                                                <p className="text-sm text-[#763c00] font-sans lg:max-h-20 overflow-hidden">
-                                                    {descriptionObj ? descriptionObj.description : "Descrição não disponível."}
-                                                </p>
-                                            </div>
-                                            <h1 className="text-2xl text-[#763c00] font-semibold ">
-                                                {meal.strMeal}
-                                            </h1>
-                                       
-                                        </div>
-                                        <div className="relative">
+                                    <div className="bg-[#f9f7dc] rounded-4xl relative min-h-96 overflow-hidden flex flex-col" key={meal.idMeal}>
+                                         <div className="relative">
                                             <Image
                                                 src={meal.strMealThumb}
                                                 alt={meal.strMeal}
@@ -97,6 +79,19 @@ export default function FoodBreakfast() {
                                             />
                                         </div>
 
+                                        <div className="flex flex-col gap-2 flex-grow text-center items-center p-4 sm:p-5 lg:p-6">
+                                            <h2 className="text-2xl text-[#763c00] font-semibold min-h-[50px]">
+                                                {meal.strMeal}
+                                            </h2>
+
+                                            <p className="text-sm text-[#763c00] font-sans lg:max-h-20 overflow-hidden flex-grow min-h-[60px]">
+                                                {descriptionObj ? descriptionObj.description : "Descrição não disponível."}
+                                            </p>
+
+                                            <Button className="bg-[#763c00] text-md text-white cursor-pointer w-auto mt-auto">
+                                                Vamos cozinhar ?
+                                            </Button>
+                                        </div>
                                     </div>
                                 );
                             })}

@@ -76,9 +76,7 @@ export default function Body() {
             }
         });
     }
-
-    console.log(isLoading)
-
+    
     return(
         <section className="overflow-hidden relative bg-[#050a30]">
             <div>
@@ -92,7 +90,6 @@ export default function Body() {
                 <div className="flex items-center text-center justify-center p-4 pt-10">
                     <h1 className="text-4xl text-white font-sans lg:text-6xl">Culinária Brasileira</h1>
                 </div>
-
                 {
                     isLoading ? (
                         <div className="flex justify-center items-center ">
@@ -108,11 +105,11 @@ export default function Body() {
                                     delay: 2000,
                                     }),
                                 ]}
-                                className="w-full"
+                                className="w-full px-12 sm:px-0"
                                 >
                                 <CarouselContent>
                                     {  receitasBR && receitasBR.map((receita) => (
-                                    <CarouselItem key={receita.id} className="sm:basis-1/2 md:basis-1/2 xl:basis-1/3">
+                                    <CarouselItem key={receita.id} className="sm:basis-1/2 md:basis-1/2 xl:basis-1/4 xl:px-4">
                                         <div className="w-full h-full">
                                         <Card className="bg-[#f4f6fc] text-[#050a30] h-full">
                                             <div>
@@ -126,27 +123,25 @@ export default function Body() {
                                                         priority 
                                                         />
                                                 </div>
-                                                <div className=" min-h-full">
-                                                    <div className="flex items-center justify-center gap-2 my-auto">
-                                                        <b className="text-sm">
-                                                            Gostinho brasileiro 
-                                                        </b>
-                                                        <Image 
-                                                            src={BandeiraBr}
-                                                            className="max-w-9 rounded-t-xl max-h-10 p-1.5"
-                                                            alt="imagem da receita" 
-                                                            width={60} 
-                                                            height={60} 
-                                                            priority 
-                                                            />
-                                                    </div>
+                                                <div className="min-h-full">
                                                     <div className="text-center py-2">
-                                                        <h1 className="text-2xl font-semibold">{receita.receita}</h1>
-                                                        <p className="text-sm font-sans py-2">
-                                                            Gostinho caseiro que conquista! 
-                                                            Prepare essa receita e encante a todos.
-                                                        </p>
-                                                        <Button variant="default" className="bg-[#050a30] text-md text-white cursor-pointer">Vamos cozinhar ?</Button>
+                                                        <div className="flex items-center justify-center ">
+                                                            <b className="text-sm">
+                                                                Gostinho brasileiro 
+                                                            </b>
+                                                            <Image 
+                                                                src={BandeiraBr}
+                                                                className="max-w-9 rounded-t-xl max-h-10 p-1.5"
+                                                                alt="imagem da receita" 
+                                                                width={60} 
+                                                                height={60} 
+                                                                priority 
+                                                                />
+                                                        </div>
+                                                        <h1 className="text-2xl font-semibold py-2">{receita.receita}</h1>
+                                                        <div className="pt-2">
+                                                            <Button variant="default" className="bg-[#050a30] text-md text-white py-2  cursor-pointer">Vamos cozinhar ?</Button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
