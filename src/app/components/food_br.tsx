@@ -76,7 +76,7 @@ export default function Body() {
             }
         });
     }
-    
+
     return(
         <section className="overflow-hidden relative bg-[#050a30]">
             <div>
@@ -105,7 +105,7 @@ export default function Body() {
                                     delay: 2000,
                                     }),
                                 ]}
-                                className="w-full px-12 sm:px-0"
+                                className="w-full px-4 sm:px-0"
                                 >
                                 <CarouselContent>
                                     {  receitasBR && receitasBR.map((receita) => (
