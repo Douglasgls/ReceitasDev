@@ -1,19 +1,10 @@
 "use client"
 import { MagnifyingGlass } from '@phosphor-icons/react/dist/ssr';
 
-import Link from "next/link";
-
-import { Barlow } from 'next/font/google'
 import { useRouter } from 'next/navigation';
-
-const hankenGrotesk = Barlow({
-    weight: ['500', '500'],
-    subsets: ['latin'],
-})
+import { FaHome } from "react-icons/fa";
 
 export default function Header() {
-   
-
     const router = useRouter();
 
     const handleClick = () => {
@@ -27,36 +18,47 @@ export default function Header() {
        <section className="overflow-hidden relative">
         <div >
             <div className="bg-white opacity-90 h-auto pt-4 sm:py-4">
-                <div className="flex items-center justify-center rounded-2xl lg:hidden xl:hidden">
-                    <div className="bg-[#050a30] w-96  h-12 flex items-center justify-center rounded-2xl md:w-auto">
-                        <input type="text" className="bg-[#050a30] w-96 h-12 pl-4 flex items-center justify-center rounded-2xl text-white focus:outline-none" placeholder="Procure por uma receita"/>
+                <div className="flex items-center gap-4 justify-center rounded-2xl lg:hidden xl:hidden">
+                    <div className="w-12 h-12 px-6  bg-[#050a30] text-white rounded-2xl cursor-pointer flex items-center justify-center">
+                        <a href="/" className="text-white text-2xl">
+                            <FaHome />
+                        </a>
+                    </div>
+                    <div className="bg-[#050a30] w-72 h-12 flex items-center justify-center rounded-2xl md:w-auto">
+                        <input type="text" className="bg-[#050a30] h-12 pl-4 flex items-center justify-center rounded-2xl text-white focus:outline-none" placeholder="Procure por uma receita"/>
                         <button className="bg-[#050a30] w-12 h-12 flex items-center justify-center rounded-2xl cursor-pointer">
                             <MagnifyingGlass size={24} color="white"/>
                         </button>
+                        
                     </div>
+                  
                 </div>
-                <div className="text-white grid grid-cols-3 gap-2 p-4 items-center justify-center sm:gap-4 sm:pt-4 lg:grid-cols-5 xl:grid-cols-4">
-                    <button className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer">
-                        <Link href="/ingredientes">
-                            <h2 className={`${hankenGrotesk.className} `}>Ingredientes</h2>
-                        </Link>
-                    </button>
-                    <button className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer" onClick={handleClick}>
-                        <Link href="/random">
-                            <h2 className={`${hankenGrotesk.className} `}>Surpreenda-me</h2>
-                        </Link>
-                    </button>
-                    <button className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer">
-                        <h2 className={`${hankenGrotesk.className} `}>Categorias</h2>
-                    </button>
-                    <div className="rounded-2xl hidden lg:block lg:col-span-2 xl:block xl:col-span-1 xl:p-2">
-                        <div className="bg-[#050a30] w-96  h-12 flex  rounded-2xl md:w-auto">
-                            <input type="text" className="bg-[#050a30] w-96 h-12 pl-4 lg:w-96 flex items-center justify-center rounded-2xl text-white focus:outline-none" placeholder="Procure por uma receita"/>
-                            <button className="bg-[#050a30] w-12 h-12 pr-2flex items-center justify-end  rounded-2xl cursor-pointer">
-                                <MagnifyingGlass size={24} color="white"/>
-                            </button>
+                <div className="text-white flex items-center justify-center sm:grid-cols-3 lg:grid-cols-5 gap-2 p-4 sm:gap-4 sm:pt-4 xl:grid-cols-5">
+                    <div className="hidden lg:flex xl:block col-span-1 items-center">
+                        <a href="/" className="w-12 h-12 flex items-center justify-center bg-[#050a30] text-white rounded-2xl cursor-pointer">
+                            <FaHome className="text-2xl" />
+                        </a>
+                    </div>
+                    <div className="col-span-2 lg:col-span-3 flex justify-center items-center gap-2">
+                        <a href='/ingredientes' className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer px-4">
+                            Ingredientes
+                        </a>
+                        <a href='/random' className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer px-4 text-nowrap">
+                            Surpreenda-me
+                        </a>
+                        <a href='/categorias' className="bg-[#050a30] w-auto h-12 flex items-center justify-center rounded-2xl cursor-pointer px-4">
+                            Categorias
+                        </a>
+                        <div className="hidden lg:block col-span-1">
+                            <div className="bg-[#050a30] w-72  h-12 flex rounded-2xl">
+                                <input type="text" className="bg-[#050a30] w-full h-12 pl-4 text-white focus:outline-none rounded-2xl" placeholder="Procure por uma receita"/>
+                                <button className="w-12 h-12 flex items-center justify-center rounded-2xl cursor-pointer">
+                                    <MagnifyingGlass size={24} color="white"/>
+                                </button>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

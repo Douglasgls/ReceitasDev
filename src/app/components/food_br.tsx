@@ -76,7 +76,6 @@ export default function Body() {
             }
         });
     }
-
     return(
         <section className="overflow-hidden relative bg-[#050a30]">
             <div>
@@ -140,7 +139,9 @@ export default function Body() {
                                                         </div>
                                                         <h1 className="text-2xl font-semibold py-2">{receita.receita}</h1>
                                                         <div className="pt-2">
-                                                            <Button variant="default" className="bg-[#050a30] text-md text-white py-2  cursor-pointer">Vamos cozinhar ?</Button>
+                                                            <Button variant="default" className="bg-[#050a30] text-md text-white py-2  cursor-pointer">
+                                                                <a href={`/receitaBR/${receita.id}`} > Vamos cozinhar ?</a>
+                                                            </Button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -155,7 +156,6 @@ export default function Body() {
                         </div>
                     )
                 }
-
                     </div>
                 <div>
             </div>

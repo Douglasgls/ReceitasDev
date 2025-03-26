@@ -56,12 +56,22 @@ export default function FoodBreakfast() {
         }
     }, [data]);
 
+
     return (
     <section className="relative bg-[#d36a1a] overflow-hidden min-h-auto">
             <article className="w-full relative">
                 <div className="flex flex-col items-center justify-center min-h-full p-12 sm:p-2 relative xl:p-32">
                     <div>
                         <h1 className="text-4xl pb-12 text-center font-sans text-[#f9f7dc] sm:text-4xl lg:text-6xl">Café da Manhã</h1>
+                        {
+                            FoodBreakfast.length === 0  ? (
+                                <div className="flex justify-center items-center ">
+                                    <div className="animate-spin rounded-full h-6 w-6 border-t-4 border-white"></div>
+                                </div>
+                            ): (
+                                <span></span>
+                            )
+                        }
                     </div>
 
                     <div className="relative grid gap-6 sm:px-12 sm:grid-cols-2 md:px-32 lg:grid-cols-3 lg:px-2 xl:grid-cols-4">
@@ -88,9 +98,11 @@ export default function FoodBreakfast() {
                                                 {descriptionObj ? descriptionObj.description : "Descrição não disponível."}
                                             </p>
 
-                                            <Button className="bg-[#763c00] text-md text-white cursor-pointer w-auto mt-auto">
-                                                Vamos cozinhar ?
-                                            </Button>
+                                                <Button variant="outline" className="bg-[#763c00] text-md text-white cursor-pointer w-auto ">
+                                                    <a href= {`/receita/${meal.idMeal}`} className="no-underline ">
+                                                        Vamos cozinhar ?
+                                                    </a>
+                                                </Button>
                                         </div>
                                     </div>
                                 );

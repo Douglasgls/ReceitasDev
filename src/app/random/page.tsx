@@ -70,6 +70,15 @@ export default function MealCard() {
             </div>
             
             <div className="p-6 lg:w-3/4">
+                {
+                    meal === null ? (
+                        <div className="flex justify-center items-center">
+                            <div className="animate-spin rounded-full h-6 w-6 border-t-4 border-black"></div>
+                        </div>
+                    ) : (
+                        <span></span>
+                    )
+                }
                 <h2 className="text-2xl lg:text-4xl text-center font-bold text-gray-800">{meal?.strMeal}</h2>
                 <p className="text-sm lg:text-lg text-center text-gray-600">{meal?.strCategory} • {meal?.strArea}</p>
                 <ul className="flex justify-center mt-4 flex-wrap">

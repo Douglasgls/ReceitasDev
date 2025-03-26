@@ -42,6 +42,17 @@ export default function FoodVegan() {
                     <div className="flex flex-col items-center justify-center min-h-full p-6 relative xl:p-32">
                         <div>
                             <h1 className="text-4xl pb-12 text-center font-sans text-[#365b6d] sm:text-4xl lg:text-6xl">Culinária Vegana</h1>
+                            <div>
+                            {
+                                foodVegan.length === 0  ? (
+                                    <div className="flex justify-center items-center ">
+                                        <div className="animate-spin rounded-full h-6 w-6 border-t-4 border-white"></div>
+                                    </div>
+                                ): (
+                                    <span></span>
+                                )
+                            }
+                    </div>
                         </div>
                         <div className="relative grid gap-6 sm:px-24 md:px-32 lg:grid-cols-3 lg:px-2">
                         {foodVegan.map((meal:any) => {
@@ -50,8 +61,10 @@ export default function FoodVegan() {
                                     <div className="bg-[#365b6d] rounded-4xl relative min-h-96 overflow-hidden flex flex-col-reverse" key={meal.idMeal}>
                                         <div className="flex flex-col-reverse flex-grow text-center items-center p-4 sm:p-5 lg:p-6">
                                             <div className="p-2">
-                                                <Button variant="default" className="bg-[#289dd2] text-md text-white cursor-pointer w-auto ">
-                                                    Vamos cozinhar ?
+                                                <Button variant="outline" className="bg-[#289dd2] text-md text-white cursor-pointer w-auto ">
+                                                    <a href= {`/receita/${meal.idMeal}`} className="no-underline ">
+                                                        Vamos cozinhar ?
+                                                    </a>
                                                 </Button>
                                             </div>
                                             <div className="p-2">
